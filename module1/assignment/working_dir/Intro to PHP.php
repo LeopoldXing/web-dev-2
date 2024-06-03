@@ -51,7 +51,7 @@ $config = [
 <div id="gallery">
     <?php
     foreach ($config['unsplash_categories'] as $index => $category) {
-        echo "<div><h2>$category</h2><img src=\"https://source.unsplash.com/300x200/?'.$category.'\" alt=\"nature image\"></div>";
+        echo "<div><h2>$category</h2><img src=\"https://source.unsplash.com/300x200/?'.$category.'\" alt=\"{$category}\"></div>";
     }
     ?>
 </div>
