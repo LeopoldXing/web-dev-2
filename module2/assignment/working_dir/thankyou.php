@@ -40,8 +40,12 @@ function validate_input()
         $errors[] = "Credit card month must be between 1 and 12.";
     }
     $currentYear = date('Y');
+    $currentMonth = date('m');
     if ($year < $currentYear || $year > (int)$currentYear + 5) {
         $errors[] = "Credit card year must be between $currentYear and " . ((int)$currentYear + 5) . ".";
+    }
+    if($year == $currentYear && $month <= $currentMonth) {
+      $errors[] = "Credit card month must be in future date";
     }
 
     $creditCardType = isset($_POST['cardtype']) ? $_POST['cardtype'] : null;
