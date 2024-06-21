@@ -1,10 +1,10 @@
 <?php
 
-/*******w******** 
-    
-    Name:
-    Date:
-    Description:
+/*******w********
+
+    Name: Luping Xing
+    Date: June 21, 2024
+    Description: php file for Posting operation
 
 ****************/
 
@@ -24,6 +24,6 @@ require('connect.php');
 </head>
 <body>
     <!-- Remember that alternative syntax is good and html inside php is bad -->
-    
+
 </body>
 </html>
