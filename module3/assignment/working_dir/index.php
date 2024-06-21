@@ -7,8 +7,12 @@
  * Description: php file for assignment 3
  ****************/
 
-$db = require('connect.php');
+require('connect.php');
 
+$query = "SELECT title, date, id, content FROM posts ORDER BY date DESC LIMIT 5";
+$statement = $db->prepare($query);
+
+$statement->execute();
 
 ?>
 
@@ -32,18 +36,35 @@ $db = require('connect.php');
     <li><a href="./post.php">New Post</a></li>
   </ul>
   <div id="all_blogs">
-    <div class="blog_post">
-      <h2><a href="./show.php?id=2975">lucia</a></h2>
-      <p>
-        <small>
-          May 17, 2024, 4:41 am -
-          <a href="./edit.php?id=2975">edit</a>
-        </small>
-      </p>
-      <div class="blog_content">
-        232
-      </div>
-    </div>
+      <?php if ($statement->rowCount() > 0): ?>
+          <?php foreach ($statement->fetchAll() as $post): ?>
+          <div class="blog_post">
+            <h2><a href="<?= "./show.php?id={$post["id"]}" ?>"><?= $post["title"] ?></a></h2>
+            <p>
+              <small>
+                  <?php
+                  try {
+                      $date = new DateTime($post["date"]);
+                  } catch (Exception $e) {
+                      echo $e->getMessage();
+                  }
+                  $formattedDate = $date->format('F d, Y, h:i A');
+                  echo $formattedDate;
+                  ?>
+                <a href="<?= "./edit.php?id={$post["id"]}" ?>">edit</a>
+              </small>
+            </p>
+            <div class="blog_content">
+                <?= htmlspecialchars(substr($post["content"], 0, 200)) ?><br>
+                <?php if (strlen($post["content"]) > 200): ?>
+                  ...<a href="<?= "./show.php?id={$post["id"]}" ?>">Read more</a>
+                <?php endif ?>
+            </div>
+          </div>
+          <?php endforeach; ?>
+      <?php else: ?>
+        <p>No recent blog posts available.</p>
+      <?php endif; ?>
   </div>
   <div id="footer">
     Copywrong 2024 - No Rights Reserved
@@ -51,15 +72,3 @@ $db = require('connect.php');
 </div>
 </body>
 </html>
-
-<?php
-$query = "SELECT * FROM posts";
-$statement = $db->prepare($query);
-
-try {
-    if($statement->execute()) {
-
-    }
-} catch (PDOException $e) {
-    echo $e->getMessage();
-}

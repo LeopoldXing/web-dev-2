@@ -15,8 +15,6 @@
          // Try creating new PDO connection to MySQL.
          $db = new PDO(DB_DSN, DB_USER, DB_PASS, $options);
          //,array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
-
-         return $db;
      } catch (PDOException $e) {
          print "Error: " . $e->getMessage();
          die(); // Force execution to stop on errors.
