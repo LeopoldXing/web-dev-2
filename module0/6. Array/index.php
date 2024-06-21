@@ -80,6 +80,18 @@ echo "<br>";
 sort($numbers);
 print_r($numbers);
 
+/*  delete the first element in an array  */
+/*  array_shift($numbers);  */
+
+/*
+ * return a new array contains the reversed original array
+ * $new_array = array_reverse($original_array);
+ * */
+
+/*
+ * switch key and value
+ * $new_array = array_flip($original_array);
+ */
 
 ?>
 
