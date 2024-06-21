@@ -1,0 +1,52 @@
+services:
+  application:
+    container_name: rrc-web-dev-assignment3
+    image: leopoldhsing2/rrc-web-dev-assignment3
+    ports:
+      - "48080:80"
+    networks:
+      - rrc-default-network
+    environment:
+      - MYSQL_HOST
+      - MYSQL_PORT
+      - MYSQL_DATABASE_NAME
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.2.0
+    container_name: rrc-assignment3-database
+    ports:
+      - "40000:3306"
+    volumes:
+      - rrc-mysql-data:/var/lib/mysql
+      - rrc-mysql-conf:/etc/mysql
+      - ./docker-init:/docker-entrypoint-initdb.d
+    networks:
+      - rrc-default-network
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      TZ: "America/Winnipeg"
+    restart: on-failure
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 6s
+      timeout: 5s
+      start_period: 10s
+      retries: 20
+
+networks:
+  rrc-default-network:
+    driver: bridge
+    name: rrc-default-network
+
+volumes:
+  rrc-mysql-data:
+    name: rrc-mysql-data
+  rrc-mysql-conf:
+    name: rrc-mysql-conf
