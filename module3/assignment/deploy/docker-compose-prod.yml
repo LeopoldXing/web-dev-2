@@ -29,16 +29,14 @@ services:
       - rrc-default-network
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-      MYSQL_USER: "${MYSQL_USER}"
-      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
       TZ: "America/Winnipeg"
     restart: on-failure
     healthcheck:
       test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-      interval: 6s
-      timeout: 5s
+      interval: 3s
+      timeout: 10s
       start_period: 10s
-      retries: 20
+      retries: 40
 
 networks:
   rrc-default-network:
