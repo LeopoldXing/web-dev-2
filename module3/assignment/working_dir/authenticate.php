@@ -1,23 +1,17 @@
- <?php
+<?php
+ob_start(); // 开始输出缓冲
 
-  define('ADMIN_LOGIN','wally');
+define('ADMIN_LOGIN','wally');
+define('ADMIN_PASSWORD','mypass');
 
-  define('ADMIN_PASSWORD','mypass');
-
-  if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])
-
-      || ($_SERVER['PHP_AUTH_USER'] != ADMIN_LOGIN)
-
-      || ($_SERVER['PHP_AUTH_PW'] != ADMIN_PASSWORD)) {
+if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])
+    || ($_SERVER['PHP_AUTH_USER'] != ADMIN_LOGIN)
+    || ($_SERVER['PHP_AUTH_PW'] != ADMIN_PASSWORD)) {
 
     header('HTTP/1.1 401 Unauthorized');
-
     header('WWW-Authenticate: Basic realm="Our Blog"');
-
     exit("Access Denied: Username and password required.");
+}
 
-  }
-
-   
-
+ob_end_flush(); // 结束输出缓冲并发送输出
 ?>
