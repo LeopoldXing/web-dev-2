@@ -2,8 +2,6 @@ services:
   application:
     container_name: rrc-web-dev-assignment3
     image: leopoldhsing2/rrc-web-dev-assignment3
-    ports:
-      - "48080:80"
     networks:
       - rrc-default-network
     environment:
@@ -37,6 +35,19 @@ services:
       timeout: 10s
       start_period: 10s
       retries: 40
+
+  nginx-proxy:
+    image: nginx
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl:/etc/nginx/ssl
+    networks:
+      - rrc-default-network
+
 
 networks:
   rrc-default-network:
