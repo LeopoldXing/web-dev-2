@@ -19,13 +19,13 @@ if ($statement && $statement->execute()) {
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Stung Eye - Hello Wootly Grins</title>
+  <title>Leopold's Post Board - <?= $post_data["title"] ?></title>
   <link rel="stylesheet" href="./main.css" type="text/css">
 </head>
 <body>
 <div id="wrapper">
   <div id="header">
-    <h1><a href="./index.php">Stung Eye - Hello</a></h1>
+    <h1><a href="./index.php">Leopold's Post Board - <?= $post_data["title"] ?></a></h1>
   </div>
   <ul id="menu">
     <li><a href="./index.php">Home</a></li>

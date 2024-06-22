@@ -38,7 +38,7 @@ if ($original_post === false) {
 <!-- Remember that alternative syntax is good and html inside php is bad -->
 <div id="wrapper">
   <div id="header">
-    <h1><a href="./index.php">Stung Eye - Edit Post</a></h1>
+    <h1><a href="./index.php">Leopold's Post Board - Edit Post</a></h1>
   </div>
   <ul id="menu">
     <li><a href="./index.php">Home</a></li>
