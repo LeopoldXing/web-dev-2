@@ -17,8 +17,6 @@ services:
   db:
     image: mysql:8.2.0
     container_name: rrc-assignment3-database
-    ports:
-      - "40000:3306"
     volumes:
       - rrc-mysql-data:/var/lib/mysql
       - rrc-mysql-conf:/etc/mysql
