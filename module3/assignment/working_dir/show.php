@@ -49,7 +49,7 @@ if ($statement && $statement->execute()) {
         </small>
       </p>
       <div class="blog_content">
-          <?= htmlspecialchars($post_data["content"]) ?>
+          <?= $post_data["content"] ?>
       </div>
     </div>
   </div>

@@ -55,7 +55,7 @@ $statement->execute();
               </small>
             </p>
             <div class="blog_content">
-                <?= htmlspecialchars(substr($post["content"], 0, 200)) ?><br>
+                <?= substr($post["content"], 0, 200) ?><br>
                 <?php if (strlen($post["content"]) > 200): ?>
                   ...<a href="<?= "./show.php?id={$post["id"]}" ?>">Read more</a>
                 <?php endif ?>
