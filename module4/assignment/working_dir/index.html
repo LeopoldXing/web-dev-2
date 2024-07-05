@@ -45,9 +45,9 @@
     <!--  search container  -->
     <div class="w-full flex flex-col space-y-5 md:flex-row md:space-y-0 md:justify-between">
       <!--  search bar  -->
-      <div class="w-full pb-2 flex justify-between border-b">
+      <form class="w-full pb-2 flex justify-between border-b" id="search-form" action="./script.js">
         <input id="address-keyword" type="text" placeholder="Search" class="w-full border-none placeholder:font-thin focus:outline-none">
-        <button id="search-button">
+        <button id="search-button" type="submit">
           <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-8 text-gray-300 duration-200 hover:scale-110"
@@ -62,7 +62,7 @@
             <line x1="21" y1="21" x2="15" y2="15"/>
           </svg>
         </button>
-      </div>
+      </form>
     </div>
     <!--  data body container  -->
     <div id="content-container" class="w-full space-y-2 md:space-y-0">

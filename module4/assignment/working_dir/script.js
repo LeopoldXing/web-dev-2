@@ -9,7 +9,9 @@
 
 const BASE_URL = "https://data.winnipeg.ca/resource/6rcy-9uik.json";
 
-const searchHandler = async () => {
+const searchHandler = async (event) => {
+  event.preventDefault();
+
   // 1. loading
   const container = document.getElementById("content-container");
   container.innerHTML = "<em>Loading...</em>";
@@ -18,7 +20,7 @@ const searchHandler = async () => {
   const keyword = document.getElementById("address-keyword").value;
 
   // 3. setup search url
-  const url = `${BASE_URL}?$where=combined_address LIKE '%${keyword.toLowerCase()}%'` + '&$limit=100';
+  const url = `${BASE_URL}?$where=combined_address LIKE '%${keyword.toUpperCase()}%'` + '&$limit=100';
   const encodedURL = encodeURI(url);
 
   // 4. search
@@ -64,6 +66,6 @@ const searchHandler = async () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Find the form element
-  const searchButton = document.getElementById("search-button");
-  searchButton.addEventListener("click", searchHandler);
+  const form = document.getElementById("search-form");
+  form.addEventListener("submit", searchHandler);
 });
