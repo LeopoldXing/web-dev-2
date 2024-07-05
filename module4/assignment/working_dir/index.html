@@ -27,9 +27,48 @@
     }
   </script>
   <link rel="stylesheet" href="main.css"/>
-  <title>My Open Data Assignment</title>
+  <title>Winnipeg Building Permit Data Search</title>
 </head>
 <body>
+<!--  global container  -->
+<div class="flex justify-center items-center min-h-screen bg-cyan-50">
+  <!--  card  -->
+  <div class="p-6 m-3 space-y-10 bg-white rounded-3xl shadow-2xl md:p-40 md:m-40">
+    <div class="w-full flex flex-col items-start space-y-5">
+      <a href="./index.html">
+        <span class="font-bold text-4xl text-center hover:cursor-pointer">Recycling, Garbage and Yard Waste Collection Days Search</span>
+      </a>
+      <div>
+        <span class="text-xl">Search Recycling, Garbage and Yard Waste Collection Days by entering your address down below in the search box, we will only return the first 100 results</span>
+      </div>
+    </div>
+    <!--  search container  -->
+    <div class="w-full flex flex-col space-y-5 md:flex-row md:space-y-0 md:justify-between">
+      <!--  search bar  -->
+      <div class="w-full pb-2 flex justify-between border-b">
+        <input id="address-keyword" type="text" placeholder="Search" class="w-full border-none placeholder:font-thin focus:outline-none">
+        <button id="search-button">
+          <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-8 text-gray-300 duration-200 hover:scale-110"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <circle cx="10" cy="10" r="7"/>
+            <line x1="21" y1="21" x2="15" y2="15"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!--  data body container  -->
+    <div id="content-container" class="w-full space-y-2 md:space-y-0">
 
+    </div>
+  </div>
+</div>
 </body>
 </html>
